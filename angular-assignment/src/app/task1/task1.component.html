@@ -1,0 +1,24 @@
+<table class="table justify-content-center">
+    <thead>
+      <tr>
+        <th scope="col">userId</th>
+        <th scope="col">id</th>
+        <th scope="col">title</th>
+        <th scope="col">body</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataArray | slice: (page-1) * pageSize : page * pageSize">
+        <th scope="row">{{ item.userId }}</th>
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.body }}</td>
+      </tr>
+    </tbody>
+</table>
+
+<ngb-pagination
+  class="d-flex justify-content-center"
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="dataArray.length"></ngb-pagination>
