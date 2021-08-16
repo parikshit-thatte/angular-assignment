@@ -10,6 +10,7 @@ import { GetDataService } from '../get-data.service';
 export class Task1Component implements OnInit {
 
   public dataArray = <data[]>[];
+  public errorMsg: any;
   
   public page = 1;
   public pageSize = 5;
@@ -17,6 +18,7 @@ export class Task1Component implements OnInit {
   constructor(private _getDataService : GetDataService) {  }
   ngOnInit(): void {
     this._getDataService.getData()
-        .subscribe(data => this.dataArray = data);
+        .subscribe(data => this.dataArray = data,
+                   error => this.errorMsg = error);
   }
 }
